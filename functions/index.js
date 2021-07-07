@@ -1,4 +1,10 @@
 const functions = require("firebase-functions");
+var firebase = require('firebase');
+var firebaseui = require('firebaseui');
+
+// Initialize the FirebaseUI Widget using Firebase.
+var ui = new firebaseui.auth.AuthUI(firebase.auth());
+
 
 // // Create and Deploy Your First Cloud Functions
 // // https://firebase.google.com/docs/functions/write-firebase-functions
