@@ -1,1 +1,3 @@
-"# storeflix" 
+"# storeflix"
+
+CI via travis
