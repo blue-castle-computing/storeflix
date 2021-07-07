@@ -152,6 +152,27 @@
     </ul>
   </div>
 
+  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-firestore.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyCJwq2B9hp68wKdx4uX8_pjuWJKAwa4C-4",
+      authDomain: "ju-shareflix-demo.firebaseapp.com",
+      databaseURL: "https://ju-shareflix-demo.firebaseio.com",
+      projectId: "ju-shareflix-demo"
+    };
+    firebase.initializeApp(config);
+
+    // make auth and firestore references
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+
+    // update firestore settings
+    db.settings({ timestampsInSnapshots: true });
+  </script>
+
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="../scripts/auth.js"></script>
