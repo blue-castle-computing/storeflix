@@ -32,9 +32,7 @@ signupForm.addEventListener('submit', (e) => {
   const logout = document.querySelector('#logout');
   logout.addEventListener('click', (e) => {
     e.preventDefault();
-    auth.signOut().then(() => {
-      console.log('user signed out');
-    })
+    auth.signOut()
   });
 
  // login
@@ -48,7 +46,6 @@ signupForm.addEventListener('submit', (e) => {
 
    // log the user in, asynch, promise, then, callback function inside
    auth.signInWithEmailAndPassword(email, password).then((cred) => {
-     console.log(cred.user);
      // close the login modal & reset the form - uses materialse lib
      const modal = document.querySelector('#modal-login');
      M.Modal.getInstance(modal).close();
