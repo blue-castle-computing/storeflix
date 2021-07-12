@@ -1,9 +1,16 @@
+
+
+
+
 // listen for auth status changes
 auth.onAuthStateChanged(user => {
   if (user) {
-    console.log('user logged in: ', user);
+    // get data
+    db.collection('holdings').get().then(snapshot => {
+      setupHoldings(snapshot.docs);
+    });
   } else {
-    console.log('user logged out');
+    setupHoldings([])
   }
 })
 
@@ -20,7 +27,6 @@ signupForm.addEventListener('submit', (e) => {
   // password > 6 chars. When signed up, the user can be seen in the firebase console authentication
   // auth is the instance of the firebase auth feature in index.htmll
   auth.createUserWithEmailAndPassword(email, password).then(cred => {
-    console.log(cred.user);
     // close the signup modal & reset form - get the id '#modal-signup from index.html modal id
     const modal = document.querySelector('#modal-signup');
     M.Modal.getInstance(modal).close();
@@ -43,7 +49,6 @@ signupForm.addEventListener('submit', (e) => {
    // get user info
    const email = loginForm['login-email'].value;
    const password = loginForm['login-password'].value;
-
    // log the user in, asynch, promise, then, callback function inside
    auth.signInWithEmailAndPassword(email, password).then((cred) => {
      // close the login modal & reset the form - uses materialse lib
@@ -51,4 +56,5 @@ signupForm.addEventListener('submit', (e) => {
      M.Modal.getInstance(modal).close();
      loginForm.reset();
    });
+
  });
